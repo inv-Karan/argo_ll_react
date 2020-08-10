@@ -5,8 +5,13 @@ import agrostore from './agrostore';
 import SignIn from './container/Login/signin';
 import SignUp from './container/Login/signup';
 import UserPage from './container/Users/userpage';
-import ImgUpload from './container/Queries/imgupload';
-import Attendance from './container/Attendance/index'
+import ImgUpload from './container/Query/imgupload';
+import Attendance from './container/Attendance/index';
+import Query from './container/Query/index';
+import Permit from './container/Permit/index';
+import News from './container/News/index';
+import Notification from './container/Notification/index';
+import Activity from './container/Activity/index';
 import Wrapper from './container/Wrapper/wrapper';
 import {
   BrowserRouter as Router,
@@ -42,6 +47,21 @@ class App extends Component {
             </Route>
             <Route exact path='/attendance'>
               <Wrapper><Attendance /></Wrapper>
+            </Route>
+            <Route exact path='/query'>
+              <Wrapper><Query /></Wrapper>
+            </Route>
+            <Route exact path='/permit'>
+              <Wrapper><Permit /></Wrapper>
+            </Route>
+            <Route exact path='/news'>
+              <Wrapper><News /></Wrapper>
+            </Route>
+            <Route exact path='/notification'>
+              <Wrapper><Notification /></Wrapper>
+            </Route>
+            <Route exact path='/activity'>
+              <Wrapper><Activity /></Wrapper>
             </Route>
           </Switch>
         </Router>

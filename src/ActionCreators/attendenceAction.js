@@ -1,5 +1,5 @@
 import {attendanceConstants} from '../Constants/attendanceConstant'
-import {getAttendance, addAttendance, deleteAttendance, updateAttendance} from '../Utility/API/attendanceServices'
+import {showAttendance, addAttendance, deleteAttendance, updateAttendance} from '../Utility/API/attendanceServices'
 
 function attendanceShow(details) {
     return {
@@ -15,9 +15,23 @@ function attendanceUpdate(details) {
     };
 };
 
-function showAttendance(userId) {
+function attendanceAdd(details) {
+    return {
+        type: attendanceConstants.ATTENDANCE_NEW,
+        payload: details
+    };
+};
+
+function attendanceDelete(details) {
+    return {
+        type: attendanceConstants.ATTENDANCE_DELETE,
+        payload: details
+    };
+};
+
+function getAttendance(userId) {
     return dispatch => {
-           getAttendance(userId)
+           showAttendance(userId)
            .then(res => {
                const data = res.data.details
                dispatch(attendanceShow(data))
@@ -27,18 +41,45 @@ function showAttendance(userId) {
     };
 };
 
-function editAttendance(obj) {
+function editAttendance(id, data) {
+    debugger
     return dispatch => {
-        updateAttendance(obj)
+        updateAttendance(id, data)
         .then(res => {
+            debugger
             const data = res.data.details
             dispatch(attendanceUpdate(data))
         })
         .catch(err => {
+            debugger
         })
     };
 };
 
+function newAttendance(obj) {
+    return dispatch => {
+        addAttendance(obj)
+        .then(res => {
+            const data = res.data.details
+            dispatch(attendanceAdd(data))
+        })
+        .catch(err => {
 
+        })
+    };
+};
 
-export {showAttendance, editAttendance}
+function removeAttendance(obj) {
+    return dispatch => {
+        deleteAttendance(obj)
+        .then(res => {
+            const data = res.data.details
+            dispatch(attendanceDelete(data))
+        })
+        .catch(err => {
+
+        })
+    };
+};
+
+export {getAttendance, editAttendance, newAttendance, removeAttendance}

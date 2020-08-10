@@ -18,6 +18,18 @@ export const attendanceReducers = (state=initialState, action) => {
                 ...state,
                 details: action.payload
             }
+        case attendanceConstants.ATTENDANCE_NEW:
+            debugger
+            return {
+                ...state,
+                details: action.payload
+            }
+        case attendanceConstants.ATTENDANCE_DELETE:
+            debugger
+            return {
+                ...state,
+                details: action.payload
+            }
         default:
             return state
     };

@@ -1,54 +1,67 @@
-import React, {Component} from "react";
-import {connect} from 'react-redux';
-import {showAttendance, editAttendance} from '../../ActionCreators/attendenceAction'
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { getAttendance, editAttendance, newAttendance, removeAttendance } from '../../ActionCreators/attendenceAction'
 
 class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: 1,
-      location: 'dsfsd',
-      lat: '',
-      long: '',
-      date: "2020-07-16",
-      type: "clock in",
-      weather: "111"
+      "user_id": 1,
+      "location": "dfgd",
+      "lat": "123",
+      "lng": "3242",
+      "time": "09:14:36",
+      "date": "2020-07-16",
+      "type": "clock_in",
+      "weather": "111"
     };
 
-  }
+  };
 
   getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(this.showPosition);
     } else {
       console.log('error in Location')
-    }
-  }
+    };
+  };
 
   showPosition = (position) => {
     this.setState({
       lat: position.coords.latitude,
       long: position.coords.longitude
     })
-  }
+  };
 
   componentDidMount() {
     this.getLocation()
-    this.props.showAttendance(1)
-    this.props.editAttendance(1)
-  }
+    this.props.getAttendance(1)
+  };
 
-  handleDisplayAttendance = () => {
-    const obj = this.state;
+  handleShowAttendance = () => {
+    // const obj = this.state;
     debugger
-    this.props.showAttendance(obj)
-  }
+    this.props.getAttendance(1)
+  };
 
   handleUpdateAttendance = () => {
     const obj = this.state;
+    // obj.weather = Date.now().toString()
     debugger
-    this.props.editAttendance(obj)
-  }
+    this.props.editAttendance(12, obj)
+  };
+
+  handleNewAttendance = () => {
+    const obj = this.state;
+    debugger
+    this.props.newAttendance(obj)
+  };
+
+  handleDeleteAttendance = () => {
+    const obj = this.state;
+    debugger
+    this.props.removeAttendance(obj)
+  };
 
   render() {
     console.log(this.props.details)
@@ -56,15 +69,21 @@ class Attendance extends Component {
       <div>
         dsfdsfs
         <button onClick={() => {
-          this.handleDisplayAttendance()
+          this.handleShowAttendance()
         }}>Display attendance</button>
         <button onClick={() => {
           this.handleUpdateAttendance()
         }}>Update attendance</button>
+        <button onClick={() => {
+          this.handleNewAttendance()
+        }}>New attendance</button>
+        <button onClick={() => {
+          this.handleDeleteAttendance()
+        }}>Delete attendance</button>
       </div>
     );
-  }
-}
+  };
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -73,8 +92,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  showAttendance,
-  editAttendance
+  getAttendance,
+  editAttendance,
+  newAttendance,
+  removeAttendance
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Attendance);

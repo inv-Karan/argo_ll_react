@@ -1,34 +1,34 @@
 import {HttpClient} from '../httpClient'
 import urlMapper from '../urlMapper'
 
-const showAttendance = (id) => {
+const showPermit = (id) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.get(`${urlMapper.getAttendance}${id}`)
+        return HttpClient.get(`${urlMapper.getPermit}${id}`)
         .then(res => resolve(res))
         .catch(err => reject(err))
     })
 };
 
-const addAttendance = (data) => {
+const addPermit = (data) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.addAttendance}`,data)
+        return HttpClient.post(`${urlMapper.addPermit}`,data)
         .then(res => resolve(res))
         .catch(err => reject(err))
     })    
 };
 
-const deleteAttendance = (id) => {
+const deletePermit = (id) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.deleteAttendance}${id}`)
+        return HttpClient.post(`${urlMapper.deletePermit}${id}`)
         .then(res => resolve(res))
         .catch(err => reject(err))
     })
 };
 
-const updateAttendance = (id, data) => {
+const updatePermit = (id, data) => {
     debugger
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.updateAttendance}${id}`, data)
+        return HttpClient.post(`${urlMapper.updatePermit}${id}`, data)
         .then(res => {
             debugger
             resolve(res)
@@ -41,4 +41,4 @@ const updateAttendance = (id, data) => {
 };
 
 
-export {showAttendance, addAttendance, deleteAttendance, updateAttendance};
+export {showPermit, addPermit, deletePermit, updatePermit};
