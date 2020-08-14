@@ -8,7 +8,9 @@ const QUERY = 'query/'
 const PERMIT = 'permit/'
 const NEWS = 'news/'
 const NOTIFICATION = 'notification/'
+const ACTIVITIES = 'activities/'
 const ACTIVITY = 'activity/'
+const DASHBOARD = 'dashboard/'
 
 export default {
     getAttendance: `${BASE_URL}${USER}${ATTENDANCE}show/`,
@@ -37,7 +39,9 @@ export default {
     updateNotification: `${BASE_URL}${USER}${NOTIFICATION}update/`,
 
     getActivity: `${BASE_URL}${USER}${ACTIVITY}show/`,
-    addActivity: `${BASE_URL}${USER}${ACTIVITY}new/`,
-    deleteActivity: `${BASE_URL}${USER}${ACTIVITY}delete/`,
-    updateActivity: `${BASE_URL}${USER}${ACTIVITY}update/`
+    addActivity: `${BASE_URL}${USER}${ACTIVITIES}new/`,
+    deleteActivity: `${BASE_URL}${USER}${ACTIVITIES}delete/`,
+    updateActivity: `${BASE_URL}${USER}${ACTIVITIES}update/`,
+
+    getDashboard: `${BASE_URL}${DASHBOARD}`,
 };

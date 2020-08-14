@@ -4,24 +4,42 @@ import urlMapper from '../urlMapper'
 const showNotification = (id) => {
     return new Promise((resolve, reject) => {
         return HttpClient.get(`${urlMapper.getNotification}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 
 const addNotification = (data) => {
     return new Promise((resolve, reject) => {
         return HttpClient.post(`${urlMapper.addNotification}`,data)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })    
 };
 
 const deleteNotification = (id) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.deleteNotification}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        return HttpClient.delete(`${urlMapper.deleteNotification}${id}`)
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 

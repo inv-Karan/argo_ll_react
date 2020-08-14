@@ -4,24 +4,42 @@ import urlMapper from '../urlMapper'
 const showPermit = (id) => {
     return new Promise((resolve, reject) => {
         return HttpClient.get(`${urlMapper.getPermit}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 
 const addPermit = (data) => {
     return new Promise((resolve, reject) => {
         return HttpClient.post(`${urlMapper.addPermit}`,data)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })    
 };
 
 const deletePermit = (id) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.deletePermit}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        return HttpClient.delete(`${urlMapper.deletePermit}${id}`)
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 
@@ -39,6 +57,5 @@ const updatePermit = (id, data) => {
         })
     })
 };
-
 
 export {showPermit, addPermit, deletePermit, updatePermit};

@@ -12,6 +12,7 @@ import Permit from './container/Permit/index';
 import News from './container/News/index';
 import Notification from './container/Notification/index';
 import Activity from './container/Activity/index';
+import Dashboard from './container/Dashboard/index';
 import Wrapper from './container/Wrapper/wrapper';
 import {
   BrowserRouter as Router,
@@ -62,6 +63,9 @@ class App extends Component {
             </Route>
             <Route exact path='/activity'>
               <Wrapper><Activity /></Wrapper>
+            </Route>
+            <Route exact path='/dashboard'>
+              <Wrapper><Dashboard /></Wrapper>
             </Route>
           </Switch>
         </Router>

@@ -4,24 +4,42 @@ import urlMapper from '../urlMapper'
 const showQuery = (id) => {
     return new Promise((resolve, reject) => {
         return HttpClient.get(`${urlMapper.getQuery}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 
 const addQuery = (data) => {
     return new Promise((resolve, reject) => {
         return HttpClient.post(`${urlMapper.addQuery}`,data)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })    
 };
 
 const deleteQuery = (id) => {
     return new Promise((resolve, reject) => {
-        return HttpClient.post(`${urlMapper.deleteQuery}${id}`)
-        .then(res => resolve(res))
-        .catch(err => reject(err))
+        return HttpClient.delete(`${urlMapper.deleteQuery}${id}`)
+        .then(res => {
+            debugger
+            resolve(res)
+        })
+        .catch(err => {
+            debugger
+            reject(err)
+        })
     })
 };
 
