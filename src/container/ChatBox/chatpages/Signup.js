@@ -9,7 +9,7 @@ export default class SignUp extends Component {
     this.state = {
       error: null,
       email: '',
-      password: '',
+      password: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
