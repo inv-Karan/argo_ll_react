@@ -6,11 +6,11 @@ class SignIn extends Component {
     constructor(props) {
         super(props)
 
+        // for demo, Email: demo2@demo.com and password: 123456
         this.state = {
-            usrname: "demo2@demo.com",
-            pswd: "123456",
-            category: "select",
-            submitted: false,
+            Email: "",
+            Password: "",
+            submitted: false
         };
     };
 
@@ -27,9 +27,9 @@ class SignIn extends Component {
 
     onhandleButton = (e) => {
         this.setState({submitted: true});
-        const {usrname, pswd, category} = this.state;
-        const user = {usrname, pswd, category}
-        if (usrname && pswd) {
+        const { Email, Password } = this.state;
+        const user = { Email, Password }
+        if (Email && Password) {
             this.props.Login_In(user);
         };
         // history.push('/userpage') 
@@ -37,33 +37,24 @@ class SignIn extends Component {
 
     render() {
         const {loggingIn} = this.props;
-        const {usrname, pswd, category, submitted} = this.state;
+        const {Email, Password, submitted} = this.state;
         return (
+            <div className="section">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-md-6 col-lg-5 col-xl-4">
+                    <div className="col-12 col-md-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2">
                         <h2>Sign <span>in</span></h2>
                         <form className="auth-form" action="#">
-                            <div className={"input-wrp" + (submitted && !usrname ? 'has-error' : '')}>
-                                <input className="textfield" type="text" name='usrname' value={usrname} onChange={this.onhandleChange}
-                                placeholder="Username or email address *" />
-                                {submitted && !usrname && <div className="help-block">Username is required</div>}
+                            <div className={"input-wrp" + (submitted && !Email ? 'has-error' : '')}>
+                                <input className="textfield" type="text" name='Email' value={Email} onChange={this.onhandleChange}
+                                placeholder="abc@example.com" />
+                                {submitted && !Email && <div className="help-block">Email is required</div>}
                             </div>
 
-                            <div className={"input-wrp" + (submitted && !pswd ? 'has-error' : '')}>
-                                <input className="textfield" type="text" name='pswd' value={pswd} onChange={this.onhandleChange}
+                            <div className={"input-wrp" + (submitted && !Password ? 'has-error' : '')}>
+                                <input className="textfield" type="text" name='Password' value={Password} onChange={this.onhandleChange}
                                 placeholder="Password" />
-                                {submitted && !pswd && <div className="help-block">Password is required</div>}
-                            </div>
-
-                            <div className="input-wrp">
-                                <select onChange={this.onhandleChange} className="browser-default custom-select">
-                                    <option value=""> Select your category </option>
-                                    <option value={category}>Farmer</option>
-                                    <option value={category}>Labour</option>
-                                    <option value={category}>Vendor</option>
-                                </select>
-                                {submitted && !category && <div className="help-block">Atmost one user type must be selected</div>}
+                                {submitted && !Password && <div className="help-block">Password is required</div>}
                             </div>
 
                             <div className="row align-items-center justify-content-between">
@@ -76,23 +67,24 @@ class SignIn extends Component {
                                 </div>
 
                                 <div className="col-auto">
-                                    <a className="link-forgot" href="#">Lost your password?</a>
+                                    <a className="link-forgot" href="#"> forgot password?</a>
                                 </div>
                             </div>
 
                             <div className="d-table mt-8">
                                 <div className="d-table-cell align-middle">
-                                    <button className="custom-btn custom-btn--medium custom-btn--style-1" type="button" onClick={this.onhandleButton}>Login in</button>
+                                    <button className="custom-btn custom-btn--medium custom-btn--style-1" type="submit" role="button" onClick={this.onhandleButton}>LOGIN</button>
                                     {loggingIn}
                                 </div>
 
                                 <div className="d-table-cell align-middle">
-                                    <a><button className="link-to" href="#" onClick={this.onButtonClick}>Sign up</button></a>
+                                    <a><button className="link-to" href="#" onClick={this.onButtonClick}>SIGN UP</button></a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-// import {authentication} from './signinReducers';
-// import {registration} from './signupReducers';
+import {authentication} from './signinReducers';
+import {registration} from './signupReducers';
 import {alert} from './alertReducers';
 import {userReducers} from './userReducers';
 import {attendanceReducers} from './attendanceReducer';
@@ -11,8 +11,8 @@ import {notificationReducers} from './notificationReducer';
 import {activityReducers} from './activityReducer'
 
 const rootReducer = combineReducers({
-    // authentication,
-    // registration,
+    authentication,
+    registration,
     alert,
     userReducers,
     attendanceReducers,
